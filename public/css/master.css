@@ -1,0 +1,217 @@
+body {
+  font-family:Helvetica Neue, Arial, sans-serif;
+  font-size:1em;
+  margin:0;
+  padding:0;
+  background-color:#F0F1DE;
+  min-width:800px; 
+}
+
+header {
+  width:800px;
+  display:block;
+  padding:0.5em 0 0.5em 0;
+  overflow:hidden;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+header h1 {
+  font-size:1em;
+  margin:0;
+  float:left;
+  position:relative;
+}
+
+header sup {
+  color:#CCC;
+}
+
+header nav {
+  display:inline-block;
+  float:right;
+}
+
+header, footer {
+  color:#7D7E75
+}
+header a, footer a {
+  color:#B4B5A7;
+  text-decoration:none;
+}
+
+footer {
+  margin-top:80px;
+  display:block;
+  width:800px;
+  padding:0.3em;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+a{ text-decoration:none; }
+a:hover{text-decoration:underline;}
+
+div.content {
+  background-color:#F7FFF0;
+  background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#F7FFF0), to(#F0F1DE));
+  padding:2em 0;
+  border-top:1px solid #D3D5C9;
+  border-bottom:1px solid #D3D5C9;
+}
+
+form{text-align:center;}
+form p label {
+  display:block;
+  padding:10px;
+  font-size:1.5em;
+}
+form p input[type='text'] {
+  padding:5px;
+  font-size:1.5em;
+}
+
+form p + p{margin-top:1em;}
+form p.buttons input{font-size:1.2em;}
+
+form p.name input {
+  text-align:center;
+}
+form.new, form.update{padding:90px 0;}
+form.new p.slug label{margin-bottom:20px;}
+form.new p.slug input{text-align:right;}
+form.new p.slug span{font-size:1.5em;}
+form.new p.error { 
+  color:#990300;
+  font-style:italic;
+}
+form.new p.error a {
+  text-decoration:underline;
+  color:#333;
+}
+
+div.status-list {
+  padding:40px 20px 40px 20px;
+  overflow:hidden;
+  width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+div.status-list div.bubble {
+  font-size:9em;
+  position:relative;
+  margin-bottom:40px;
+}
+
+div.status-list dl.beards + dl.faces{margin-left:50px;}
+div.status-list ul{padding-left:50px;}
+div.status-list ul li{display:inline-block; margin-bottom:10px;}
+div.status-list ul li a {
+  color:#CCC;
+  margin-right:10px;
+  padding:5px;
+}
+
+div.status-list .beards, div.status-list .faces {
+  width:350px;
+  margin-left:auto;
+  margin-right:auto;
+}
+div.status-list .beards{float:left;}
+div.status-list .faces{float:right;}
+
+dl.individual-status {
+  width:800px;
+  text-align:center;
+  margin-left:auto;
+  margin-right:auto;
+  overflow:hidden;
+  padding:20px;
+  font-size:1em;
+}
+dl.individual-status dt {
+  float:left;
+  margin-right:50px;
+  display:block;
+}
+dl.individual-status .icon {
+  border:1px solid #CCC;
+  width:150px;
+  height:150px;
+  text-align:center;
+  border-radius:5px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  background-color:transparent;
+  margin-bottom:15px;
+}
+dl.individual-status span {
+  color:#666;
+  display:block;
+  padding-top:10px;
+}
+dl.individual-status dd {
+  float:left;
+  font-size:16em;
+}
+
+.bubble {
+  margin-left:auto;
+  margin-right:auto;
+  color:#333;
+	background:#FFF;
+  font-size:1em;
+	position:relative;
+  padding:15px;
+  margin:0;
+  -moz-border-radius:20px;
+  -webkit-border-radius:20px;
+  border-radius:20px;
+  box-shadow: 5px 5px 5px #CCC;
+  -webkit-box-shadow:5px 5px 5px #CCC;
+  -moz-box-shadow: 5px 5px 5px #CCC;
+}
+
+.bubble:after {
+  content:"\00a0";
+  display:block; /* reduce the damage in FF3.0 */
+  position:absolute;
+  z-index:0;
+  width:0;
+  height:0;
+  border-top:30px solid transparent;
+  border-right:35px solid transparent;
+  border-left:35px solid transparent;
+  border-bottom:30px solid transparent;
+}
+
+.bubble.left:after {
+  top:35px;
+  left:-70px;
+  border-right:35px solid #FFF;
+}
+
+.bubble.bottom:after {
+  bottom:-50px;
+  left:30px;
+  border-top:30px solid #FFF;
+}
+
+.bubble p {
+  display:block;
+  font-weight:bold;
+  padding:0 0.1em;
+  margin:0;
+  text-align:center;
+  color:#444;
+/*  text-shadow:#CCC -1px -3px 0, #000 1px 3px 0;*/
+  text-shadow: -2px 0px 0px #000, 1px 1px 0px #AAA;
+  background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#F4F4F4), to(#F9F9F9));
+  background-image:-moz-linear-gradient(0deg, #F4F4F4, #F9F9F9);
+  border-radius:10px;
+  -moz-border-radius:10px;
+  -webkit-border-radius:10px;
+  text-transform:uppercase;
+}

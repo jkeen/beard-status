@@ -1,0 +1,26 @@
+<!DOCTYPE html">
+<head>
+  <title>Beard Status</title>
+  <%= stylesheet_link_tag "/css/master.css", :media => :screen %>
+  <%= stylesheet_link_tag "/css/reset.css", :media => :screen %>
+</head>
+<body>
+  <header>
+    <h1><a href="http://beardstatus.com">Beard Status</a></h1>
+    <nav>
+      <% if new_user? %>
+        <a href="/new">Add Your Status</a>
+      <% else %>
+        <a href="<%= edit_url %>">Update Beard Status</a>
+      <% end  %>
+    </nav>
+  </header>
+  <div class="content">
+    <%= yield %>  
+  </div>
+  <footer>
+    <p>
+      Brought to you by <a href="http://twitter.com/jeffxl">@jeffxl</a>  |  <a href="http://github.com/jkeen/beard-status">Report An Issue</a>
+    </p>
+  </footer>
+</body>

@@ -1,0 +1,17 @@
+<form class="new" name="status_update" action="/new" method="post">
+  <input type="hidden" name="slug" value="<%= slug %>">
+  <p class="instructions">
+    Choose your address, dude.
+  </p>
+  <% if @dude %>
+  <p class="error">
+    <%= taken_message(@dude) %>
+  </p>
+  <% end %>
+  <p class="slug">
+    <span class="url">http://</span><input id="slug" name="desired_slug" type="text" autofocus/><span class="url">.beardstatus.com</span>
+  </p>
+  <p class="buttons">
+    <input name="status" type="submit" value="I Hope It's Available"/>
+  </p>
+</form>

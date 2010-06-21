@@ -1,0 +1,7 @@
+config/
+Capfile
+.DS_Store
+*.swp
+*.db
+log/*
+tmp/*

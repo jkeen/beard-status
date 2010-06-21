@@ -1,0 +1,15 @@
+<form class="update" name="status_update" action="/dude/<%= slug %>" method="post">
+  <% if @dude %>
+  <input type="hidden" name="_method" value="put"></input>
+  <% end %>
+  <input type="hidden" name="slug" value="<%= slug %>">
+  <p class="name">
+    <label for="dude_name">Who is this guy?</label>
+    <input id="dude_name" name="name" type="text" autofocus value="<%= @dude.name if @dude %>"/>
+  </p>
+  <p class="buttons">
+    <label>Does he have a beard?</label>
+    <input name="status" type="submit" value="Yes"/>
+    <input name="status" type="submit" value="No"/>
+  </p>
+</form>

@@ -1,0 +1,13 @@
+<dl class="individual-status">
+  <dt>
+    <div class="icon"></div>
+    <p><%= @dude.display_name %></p>
+  </dt>
+  <dd>
+    <div class="bubble left <%= @dude.printed_status.downcase %>">
+      <p>
+        <%= @dude.printed_status %>
+      </p>
+    </div>
+  </dd>
+</dl>
