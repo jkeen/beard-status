@@ -12,12 +12,12 @@ helpers do
   end
   
   def status_url(s)
-    # "/dude/#{slug}"
+    # "/dude/#{s}"
     "http://#{s}.beardstatus.com"
   end
   
   def edit_url(s = slug)
-    # "/dude/#{slug}/edit"
+    # "/dude/#{s}/edit"
     "http://#{s}.beardstatus.com/edit"
   end
     
@@ -81,7 +81,7 @@ subdomain do
     redirect '/', 303
   end
   
-  post '/update?' do
+  put '/?' do
     update
     redirect '/', 303
   end
@@ -110,12 +110,12 @@ end
 
 post '/dude/:slug/?' do 
   create
-  redirect "/dude/#{slug}", 303
+  redirect status_url(slug), 303
 end
 
 put '/dude/:slug/?' do
   update
-  redirect "/dude/#{slug}", 303
+  redirect status_url(slug), 303
 end
 
 get '/?' do
