@@ -26,6 +26,7 @@ helpers do
   end
   
   def slug_available?(slug)
+    return false if slug.empty?
     @dude = Dude.get(slug)
     @dude.nil?
   end
