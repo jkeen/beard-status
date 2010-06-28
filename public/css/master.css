@@ -154,6 +154,16 @@ dl.individual-status .icon {
   background-color:transparent;
   margin-bottom:15px;
 }
+dl.individual-status dt p.edit {
+  margin-top:5px;
+  font-size:0.8em;
+}
+dl.individual-status dt p.edit a {
+  color:#DDD;
+}
+dl.individual-status:hover p.edit a {
+  color:#AAA;
+}
 dl.individual-status span {
   color:#666;
   display:block;
