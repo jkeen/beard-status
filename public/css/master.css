@@ -144,7 +144,7 @@ dl.individual-status dt {
   display:block;
 }
 dl.individual-status .icon {
-  border:1px solid #CCC;
+  border:2px solid #CCC;
   width:150px;
   height:150px;
   text-align:center;
@@ -152,7 +152,17 @@ dl.individual-status .icon {
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   background-color:transparent;
+  background-position:center center;
+  background-attachment:scroll;
+  background-repeat:no-repeat;
   margin-bottom:15px;
+  overflow:hidden;
+}
+dl.individual-status.beard .icon {
+  background-image:url(/images/beard.jpg);  
+}
+dl.individual-status.no-beard .icon {
+  background-image:url(/images/no-beard.jpg);
 }
 dl.individual-status dt p.edit {
   margin-top:5px;
