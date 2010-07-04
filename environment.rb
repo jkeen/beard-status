@@ -1,6 +1,5 @@
-require 'bundler'
-Bundler.setup
-
+require "rubygems"
+require "bundler/setup"
 require 'sinatra'
 require 'sinatra/static_assets'
 require "sinatra/subdomain"

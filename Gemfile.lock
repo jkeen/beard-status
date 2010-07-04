@@ -1,0 +1,69 @@
+--- 
+hash: 5830a4f92ec688e5762a2172614d260bb1379291
+sources: 
+- Rubygems: 
+    uri: http://gemcutter.org
+- Rubygems: 
+    uri: http://gems.github.com
+specs: 
+- addressable: 
+    version: 2.1.2
+- data_objects: 
+    version: 0.10.2
+- extlib: 
+    version: 0.9.15
+- dm-core: 
+    version: 1.0.0
+- dm-do-adapter: 
+    version: 1.0.0
+- dm-migrations: 
+    version: 1.0.0
+- do_sqlite3: 
+    version: 0.10.2
+- dm-sqlite-adapter: 
+    version: 1.0.0
+- rack: 
+    version: 1.2.1
+- sinatra: 
+    version: "1.0"
+- emk-sinatra-url-for: 
+    version: 0.2.1
+- sinatra-static-assets: 
+    version: 0.5.0
+- sinatra-subdomain: 
+    version: 0.1.0
+dependencies: 
+  sinatra: 
+    version: ">= 0"
+    group: 
+    - :default
+    require: 
+    - sinatra
+  sinatra-static-assets: 
+    version: ">= 0"
+    group: 
+    - :default
+    require: 
+    - sinatra/static_assets
+  sinatra-subdomain: 
+    version: ">= 0"
+    group: 
+    - :default
+    require: 
+    - sinatra/subdomain
+  rack: 
+    version: ">= 0"
+    group: 
+    - :default
+  dm-core: 
+    version: ">= 0"
+    group: 
+    - :default
+  dm-sqlite-adapter: 
+    version: ">= 0"
+    group: 
+    - :default
+  dm-migrations: 
+    version: ">= 0"
+    group: 
+    - :default
