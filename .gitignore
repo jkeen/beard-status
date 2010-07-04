@@ -5,7 +5,8 @@ Capfile
 *.db
 log/*
 tmp/*
-vendor/gems/gems
-vendor/gems/specifications
-vendor/gems/doc
+.bundle
+vendor/gems/gems/*
+vendor/gems/specifications/*
+vendor/gems/doc/*
 vendor/gems/environment.rb
