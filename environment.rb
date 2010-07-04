@@ -1,4 +1,5 @@
 require "rubygems"
+require "bundler"
 Bundler.setup # use require 'bundler/setup' for bundler 1.0
 require 'sinatra'
 require 'sinatra/static_assets'
