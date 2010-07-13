@@ -7,8 +7,8 @@
     </dt>
     <dd>
       <ul>
-        <% @beards.each do |beard| %>
-          <li><a href="<%= status_url(beard.slug) %>"><%= beard.display_name %></a></li>
+        <% @beards.each do |dude| %>
+          <li><a href="<%= status_url(dude.slug) %>"><%= dude.display_name %></a></li>
         <% end %>
       </ul>
     </dd>
@@ -21,8 +21,8 @@
     </dt>
     <dd>
       <ul>
-        <% @faces.each do |face| %>
-          <li><a href="<%= status_url(face.slug) %>"><%= face.display_name %></a></li>
+        <% @faces.each do |dude| %>
+          <li><a href="<%= status_url(dude.slug) %>"><%= dude.display_name %></a></li>
         <% end %>
       </ul>
     </dd>

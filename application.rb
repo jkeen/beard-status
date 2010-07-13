@@ -1,86 +1,75 @@
 require 'environment'
 
 helpers do
-  def slug
+  def dude_specified
     subdomain || params[:slug]
   end
-  
+
   def new_user?
     slug.nil? || slug.empty?
   end
-  
-  def status_url(s)
+
+  def status_url(slug)
     # "/dude/#{s}"
-    "http://#{s}.beardstatus.com"
+    base_url.gsub("\/\/", "//#{slug}.")
   end
-  
-  def edit_url(s = slug)
-    # "/dude/#{s}/edit"
-    "http://#{s}.beardstatus.com/edit"
-  end
-    
+
   def taken_message(dude)
     %Q{Aw shit&mdash;<a href="#{status_url(dude.slug)}">#{dude.display_name}</a> and his #{dude.has_beard? ? "bearded face " : "bald face "} have already claimed that address.}
   end
-  
+
   def slug_available?(slug)
     return false if slug.empty?
-    @dude = Dude.get(slug)
+    @dude = Dude.find_by_slug(dude_specified)
     @dude.nil?
   end
-  
-  def create
-    @dude = Dude.create({
-      :slug => slug,
-      :name => params.fetch("name") || slug,
-      :status => massage_status(params.fetch("status"))
-    })
-  end
 
-  def update
-    @dude = Dude.get(slug)
-    @dude.update({
-        :name => params.fetch("name") || slug,
-        :status => massage_status(params.fetch("status"))
-    })
-  end
-
-  def edit
-    @dude = Dude.get(slug)
-    erb :edit
-  end
-
-  def show
-    @dude = Dude.get(slug)
-    if @dude
-      erb :status
-    else
-      edit
-    end
-  end
-  
   def massage_status(status)
     return true if status.downcase == "yes"
     return false
-  end  
+  end
+
+  def base_url
+     @base_url ||= "#{request.env['rack.url_scheme']}://#{request.env['HTTP_HOST']}"
+  end
+end
+
+before do
+   @dude = Dude.find_by_slug(dude_specified) if dude_specified
 end
 
 subdomain do
-  get '/?' do 
-    show
+  get '/?' do
+    if @dude
+      erb :status
+    else
+      erb :edit
+    end
   end
-  
+
   get '/edit?' do
-    edit
+    erb :edit
   end
-  
-  post '/?' do 
-    create
+
+  post '/?' do
+    @state = BeardState.new(:status => massage_status(params.fetch("status")))
+    @dude = @state.dude = Dude.new({
+      :slug => subdomain,
+      :name => params.fetch("name") || subdomain
+    })
+    @state.save
     redirect '/', 303
   end
-  
+
   put '/?' do
-    update
+    @dude.update_attributes({
+      :name => (params.fetch("name") || subdomain)
+    })
+
+    new_status = massage_status(params.fetch("status"))
+    if (@dude.current_state.status != new_status && !params.fetch("status").nil?)
+      @dude.beard_states.create({:status => new_status})
+    end
     redirect '/', 303
   end
 end
@@ -98,26 +87,8 @@ post '/new?' do
   end
 end
 
-get '/dude/:slug/?' do
-  show
-end
-
-get '/dude/:slug/edit?' do
-  edit  
-end
-
-post '/dude/:slug/?' do 
-  create
-  redirect status_url(slug), 303
-end
-
-put '/dude/:slug/?' do
-  update
-  redirect status_url(slug), 303
-end
-
 get '/?' do
-  @beards = Dude.all(:status => true)
-  @faces = Dude.all(:status => false)
+  @beards = Dude.with_beards
+  @faces = Dude.without_beards
   erb :index
 end

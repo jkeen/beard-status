@@ -6,12 +6,11 @@ require 'sinatra/static_assets'
 require "sinatra/subdomain"
 require 'erb'
 require 'rack/request'
-require "dm-core"
-require 'dm-sqlite-adapter'
-require 'dm-migrations'
+require 'active_record'
+require 'sinatra/activerecord'
 
 # Database setup.
-DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{File.expand_path(File.dirname(__FILE__))}/db/production.db")
+set :database, "sqlite3:///db/production.db"
 
 # Load Models
 require 'models'

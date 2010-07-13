@@ -1,37 +1,44 @@
 --- 
-hash: 5830a4f92ec688e5762a2172614d260bb1379291
+hash: 9037c27390263ea99d2c14d0612ce597fbda4cb2
 sources: 
+- Git: 
+    git: git://github.com/dancroak/sinatra-activerecord
+    uri: git://github.com/dancroak/sinatra-activerecord
+    ref: 86a9fb208de4e52a35899035bc12e20c8add3a31
 - Rubygems: 
     uri: http://gemcutter.org
 - Rubygems: 
     uri: http://gems.github.com
 specs: 
-- addressable: 
-    version: 2.1.2
-- data_objects: 
-    version: 0.10.2
-- extlib: 
-    version: 0.9.15
-- dm-core: 
-    version: 1.0.0
-- dm-do-adapter: 
-    version: 1.0.0
-- dm-migrations: 
-    version: 1.0.0
-- do_sqlite3: 
-    version: 0.10.2
-- dm-sqlite-adapter: 
-    version: 1.0.0
+- rake: 
+    version: 0.8.7
+- activesupport: 
+    version: 2.3.8
+- activerecord: 
+    version: 2.3.8
 - rack: 
     version: 1.2.1
 - sinatra: 
     version: "1.0"
 - emk-sinatra-url-for: 
     version: 0.2.1
+- ffi: 
+    version: 0.6.3
+- nokogiri: 
+    version: 1.4.2
+- rack-test: 
+    version: 0.5.4
+- sinatra-activerecord: 
+    version: 0.1.2
+    source: 0
 - sinatra-static-assets: 
     version: 0.5.0
 - sinatra-subdomain: 
     version: 0.1.0
+- sqlite3: 
+    version: 0.1.1
+- webrat: 
+    version: 0.7.1
 dependencies: 
   sinatra: 
     version: ">= 0"
@@ -55,15 +62,25 @@ dependencies:
     version: ">= 0"
     group: 
     - :default
-  dm-core: 
+  activerecord: 
     version: ">= 0"
     group: 
     - :default
-  dm-sqlite-adapter: 
+    require: 
+    - active_record
+  sinatra-activerecord: 
     version: ">= 0"
     group: 
     - :default
-  dm-migrations: 
+  sqlite3: 
+    version: ">= 0"
+    group: 
+    - :default
+  rack-test: 
+    version: ">= 0"
+    group: 
+    - :default
+  webrat: 
     version: ">= 0"
     group: 
     - :default

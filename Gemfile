@@ -4,6 +4,8 @@ gem 'sinatra', :require => "sinatra"
 gem 'sinatra-static-assets', :require => "sinatra/static_assets"
 gem "sinatra-subdomain", :require => "sinatra/subdomain"
 gem 'rack'
-gem "dm-core"
-gem 'dm-sqlite-adapter'
-gem 'dm-migrations'
+gem 'activerecord', :require => "active_record"
+gem 'sinatra-activerecord', :git => "git://github.com/dancroak/sinatra-activerecord"
+gem 'sqlite3'
+gem 'rack-test'
+gem 'webrat'
