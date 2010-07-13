@@ -1,17 +1,50 @@
 --- 
-hash: 9037c27390263ea99d2c14d0612ce597fbda4cb2
-sources: 
-- Git: 
-    git: git://github.com/dancroak/sinatra-activerecord
-    uri: git://github.com/dancroak/sinatra-activerecord
-    ref: 86a9fb208de4e52a35899035bc12e20c8add3a31
-- Rubygems: 
-    uri: http://gemcutter.org
-- Rubygems: 
-    uri: http://gems.github.com
+dependencies: 
+  activerecord: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - active_record
+  sqlite3-ruby: 
+    group: 
+    - :default
+    version: ">= 0"
+  sinatra-activerecord: 
+    group: 
+    - :default
+    version: ">= 0"
+  rack: 
+    group: 
+    - :default
+    version: ">= 0"
+  webrat: 
+    group: 
+    - :default
+    version: ">= 0"
+  sinatra: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - sinatra
+  sinatra-static-assets: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - sinatra/static_assets
+  rack-test: 
+    group: 
+    - :default
+    version: ">= 0"
+  sinatra-subdomain: 
+    group: 
+    - :default
+    version: ">= 0"
+    require: 
+    - sinatra/subdomain
 specs: 
-- rake: 
-    version: 0.8.7
 - activesupport: 
     version: 2.3.8
 - activerecord: 
@@ -22,8 +55,6 @@ specs:
     version: "1.0"
 - emk-sinatra-url-for: 
     version: 0.2.1
-- ffi: 
-    version: 0.6.3
 - nokogiri: 
     version: 1.4.2
 - rack-test: 
@@ -35,52 +66,17 @@ specs:
     version: 0.5.0
 - sinatra-subdomain: 
     version: 0.1.0
-- sqlite3: 
-    version: 0.1.1
+- sqlite3-ruby: 
+    version: 1.3.1
 - webrat: 
     version: 0.7.1
-dependencies: 
-  sinatra: 
-    version: ">= 0"
-    group: 
-    - :default
-    require: 
-    - sinatra
-  sinatra-static-assets: 
-    version: ">= 0"
-    group: 
-    - :default
-    require: 
-    - sinatra/static_assets
-  sinatra-subdomain: 
-    version: ">= 0"
-    group: 
-    - :default
-    require: 
-    - sinatra/subdomain
-  rack: 
-    version: ">= 0"
-    group: 
-    - :default
-  activerecord: 
-    version: ">= 0"
-    group: 
-    - :default
-    require: 
-    - active_record
-  sinatra-activerecord: 
-    version: ">= 0"
-    group: 
-    - :default
-  sqlite3: 
-    version: ">= 0"
-    group: 
-    - :default
-  rack-test: 
-    version: ">= 0"
-    group: 
-    - :default
-  webrat: 
-    version: ">= 0"
-    group: 
-    - :default
+hash: e3a2b89add0644c72d49b1c9572e7ac48dced27b
+sources: 
+- Git: 
+    uri: git://github.com/dancroak/sinatra-activerecord
+    git: git://github.com/dancroak/sinatra-activerecord
+    ref: 86a9fb208de4e52a35899035bc12e20c8add3a31
+- Rubygems: 
+    uri: http://gemcutter.org
+- Rubygems: 
+    uri: http://gems.github.com

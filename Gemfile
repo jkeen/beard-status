@@ -6,6 +6,6 @@ gem "sinatra-subdomain", :require => "sinatra/subdomain"
 gem 'rack'
 gem 'activerecord', :require => "active_record"
 gem 'sinatra-activerecord', :git => "git://github.com/dancroak/sinatra-activerecord"
-gem 'sqlite3'
+gem 'sqlite3-ruby'
 gem 'rack-test'
 gem 'webrat'
