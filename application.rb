@@ -72,6 +72,28 @@ subdomain do
     end
     redirect '/', 303
   end
+  
+  get '/rss.xml' do
+    builder do |xml|
+      xml.instruct! :xml, :version => '1.0'
+      xml.rss :version => "2.0" do
+        xml.channel do
+          xml.title "Beard History For #{@dude.name}"
+          xml.link "http://#{@dude.slug}.beardstatus.com/"
+
+          @dude.beard_states.each do |state|
+            xml.item do
+              xml.title state.printed_status
+              xml.link "http://#{@dude.slug}.beardstatus.com/#status-#{state.id}"
+              xml.description ""
+              xml.pubDate Time.parse(state.created_at.to_s).rfc822()
+              xml.guid "http://#{@dude.slug}.beardstatus.com/#status-#{state.id}"
+            end
+          end
+        end
+      end
+    end
+  end
 end
 
 get '/new?' do

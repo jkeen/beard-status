@@ -3,6 +3,10 @@
   <title>Beard Status</title>
   <%= stylesheet_link_tag "/css/master.css", :media => :screen %>
   <%= stylesheet_link_tag "/css/reset.css", :media => :screen %>
+  <% if @dude %>
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for <%= dude_specified %>" href="/rss.xml" />
+  <% end %>
+  
   <!--[if lt IE 9]>
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
