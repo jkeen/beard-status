@@ -20,7 +20,7 @@ helpers do
 
   def slug_available?(slug)
     return false if slug.empty?
-    @dude = Dude.find_by_slug(dude_specified)
+    @dude = Dude.find_by_slug(slug)
     @dude.nil?
   end
 
