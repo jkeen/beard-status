@@ -1,5 +1,12 @@
 require "rubygems"
-Bundler.setup # use require 'bundler/setup' for bundler 1.0
+
+# This is really annoying.  It doesn't like require 'bundler' when passenger starts it, but needs require 'bundler' when capistrano tries to run a migration.  
+begin
+  require "bundler"
+ensure
+  Bundler.setup # use require 'bundler/setup' for bundler 1.0
+end
+
 require 'sinatra'
 require 'sinatra/static_assets'
 require "sinatra/subdomain"
