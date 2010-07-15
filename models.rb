@@ -2,6 +2,7 @@ class Dude < ActiveRecord::Base
   has_many :beard_states
   validates_uniqueness_of :slug
 
+  default_scope :order => "created_at desc"
   named_scope :without_beards, {:conditions => ["dudes.id IN (select dude_id from beard_states group by dude_id having status = ?)", false]}
   named_scope :with_beards, {:conditions => ["dudes.id IN (select dude_id from beard_states group by dude_id having status = ?)", true]}
 

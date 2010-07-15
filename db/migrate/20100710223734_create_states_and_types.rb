@@ -26,12 +26,6 @@ class CreateStatesAndTypes < ActiveRecord::Migration
 
   def self.down
     rename_table :old_dudes, :dudes
-    change_table :table_name do |t|
-    end
-    change_table :dudes do |t|
-      t.remove :id
-    end
-    
     drop_table :beard_types
     drop_table :beard_states
   end

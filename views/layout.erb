@@ -4,7 +4,9 @@
   <%= stylesheet_link_tag "/css/master.css", :media => :screen %>
   <%= stylesheet_link_tag "/css/reset.css", :media => :screen %>
   <% if @dude %>
-  <link rel="alternate" type="application/rss+xml" title="RSS Feed for <%= dude_specified %>" href="/rss.xml" />
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for <%= dude_specified %>" href="/rss.xml" />  
+  <% else %>
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed for Beard Status" href="/rss.xml" />  
   <% end %>
   
   <!--[if lt IE 9]>

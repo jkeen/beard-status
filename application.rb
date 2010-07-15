@@ -74,6 +74,7 @@ subdomain do
   end
   
   get '/rss.xml' do
+    pass unless subdomain
     builder do |xml|
       xml.instruct! :xml, :version => '1.0'
       xml.rss :version => "2.0" do
@@ -89,6 +90,28 @@ subdomain do
               xml.pubDate Time.parse(state.created_at.to_s).rfc822()
               xml.guid "http://#{@dude.slug}.beardstatus.com/#status-#{state.id}"
             end
+          end
+        end
+      end
+    end
+  end
+end
+
+get '/rss.xml' do
+  builder do |xml|
+    xml.instruct! :xml, :version => '1.0'
+    xml.rss :version => "2.0" do
+      xml.channel do
+        xml.title "Beard Status"
+        xml.link "http://beardstatus.com/"
+
+        BeardState.find(:all, :include => :dude).each do |state|
+          xml.item do
+            xml.title "#{state.dude.name} changed his Beards Status to #{state.printed_status}"
+            xml.link "http://#{state.dude.slug}.beardstatus.com/"
+            xml.description ""
+            xml.pubDate Time.parse(state.created_at.to_s).rfc822()
+            xml.guid "http://#{state.dude.slug}.beardstatus.com/#status-#{state.id}"
           end
         end
       end

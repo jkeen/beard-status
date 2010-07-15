@@ -13,5 +13,14 @@ class MoveDudes < ActiveRecord::Migration
   end
 
   def self.down
+    create_table :old_dudes, :force => true do |t|
+      t.string :name
+      t.string :slug
+      t.boolean :status      
+    end
+    
+    Dude.each do |dude|
+      OldDude.create({:name => dude.name, :slug => dude.slug, :status => dude.beard_states.last.status})
+    end
   end
 end
