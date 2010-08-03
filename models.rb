@@ -1,5 +1,6 @@
 class Dude < ActiveRecord::Base
-  has_many :beard_states
+  has_many :beard_states, :dependent => :destroy
+  validates_presence_of :slug
   validates_uniqueness_of :slug
 
   default_scope :order => "created_at desc"

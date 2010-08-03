@@ -52,12 +52,12 @@ subdomain do
   end
 
   post '/?' do
-    @state = BeardState.new(:status => massage_status(params.fetch("status")))
-    @dude = @state.dude = Dude.new({
+    @dude = Dude.new({
       :slug => subdomain,
       :name => params.fetch("name") || subdomain
     })
-    @state.save
+    @dude.beard_states << BeardState.new(:status => massage_status(params.fetch("status")))
+    @dude.save
     redirect '/', 303
   end
 
