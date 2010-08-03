@@ -142,6 +142,7 @@ dl.individual-status dt {
   float:left;
   margin-right:50px;
   display:block;
+  width: 150px;
 }
 dl.individual-status .icon {
   border:2px solid #CCC;

@@ -18,6 +18,10 @@ helpers do
     %Q{Aw shit&mdash;<a href="#{status_url(dude.slug)}">#{dude.display_name}</a> and his #{dude.has_beard? ? "bearded face " : "bald face "} have already claimed that address.}
   end
 
+  def error_message(dude)
+    %Q{Something bad went down, and I'm starting to think you were responsible for it.  Whatever you wanted to do ain't happening, bud.}
+  end
+
   def slug_available?(slug)
     return false if slug.empty?
     @dude = Dude.find_by_slug(slug)
@@ -56,7 +60,7 @@ subdomain do
       :slug => subdomain,
       :name => params.fetch("name") || subdomain
     })
-    @dude.beard_states << BeardState.new(:status => massage_status(params.fetch("status")))
+    @dude.beard_versions << BeardVersion.new(:status => massage_status(params.fetch("status")))
     @dude.save
     redirect '/', 303
   end
@@ -68,7 +72,7 @@ subdomain do
 
     new_status = massage_status(params.fetch("status"))
     if (@dude.current_state.status != new_status && !params.fetch("status").nil?)
-      @dude.beard_states.create({:status => new_status})
+      @dude.beard_versions.create({:status => new_status})
     end
     redirect '/', 303
   end
@@ -82,7 +86,7 @@ subdomain do
           xml.title "Beard History For #{@dude.name}"
           xml.link "http://#{@dude.slug}.beardstatus.com/"
 
-          @dude.beard_states.each do |state|
+          @dude.beard_versions.each do |state|
             xml.item do
               xml.title state.printed_status
               xml.link "http://#{@dude.slug}.beardstatus.com/#status-#{state.id}"
@@ -105,7 +109,7 @@ get '/rss.xml' do
         xml.title "Beard Status"
         xml.link "http://beardstatus.com/"
 
-        BeardState.find(:all, :include => :dude).each do |state|
+        BeardVersion.find(:all, :include => :dude).each do |state|
           xml.item do
             xml.title "#{state.dude.name} changed his Beards Status to #{state.printed_status}"
             xml.link "http://#{state.dude.slug}.beardstatus.com/"

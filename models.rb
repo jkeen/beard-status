@@ -1,11 +1,11 @@
 class Dude < ActiveRecord::Base
-  has_many :beard_states, :dependent => :destroy
+  has_many :beard_versions, :dependent => :destroy
   validates_presence_of :slug
   validates_uniqueness_of :slug
 
   default_scope :order => "created_at desc"
-  named_scope :without_beards, {:conditions => ["dudes.id IN (select dude_id from beard_states group by dude_id having status = ?)", false]}
-  named_scope :with_beards, {:conditions => ["dudes.id IN (select dude_id from beard_states group by dude_id having status = ?)", true]}
+  named_scope :without_beards, {:conditions => ["dudes.id IN (select dude_id from beard_versions group by dude_id having status = ?)", false]}
+  named_scope :with_beards, {:conditions => ["dudes.id IN (select dude_id from beard_versions group by dude_id having status = ?)", true]}
 
   def has_beard?
     current_state.status
@@ -16,7 +16,7 @@ class Dude < ActiveRecord::Base
   end
 
   def current_state
-    beard_states.first
+    beard_versions.first
   end
   
   def display_name
@@ -32,7 +32,7 @@ class Dude < ActiveRecord::Base
   end
 end
 
-class BeardState < ActiveRecord::Base
+class BeardVersion < ActiveRecord::Base
   belongs_to :dude
   belongs_to :beard_type #Active Record, this is so backwards
   default_scope :order => "created_at desc"
@@ -43,5 +43,5 @@ class BeardState < ActiveRecord::Base
 end
 
 class BeardType < ActiveRecord::Base
-  has_many :beard_states
+  has_many :beard_versions
 end
