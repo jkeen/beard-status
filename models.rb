@@ -4,9 +4,21 @@ class Dude < ActiveRecord::Base
   validates_uniqueness_of :slug
 
   default_scope :order => "created_at desc"
-  named_scope :without_beards, {:conditions => ["dudes.id IN (select dude_id from beard_versions group by dude_id having status = ?)", false]}
-  named_scope :with_beards, {:conditions => ["dudes.id IN (select dude_id from beard_versions group by dude_id having status = ?)", true]}
+  
+  # Here's some code I don't like.
+  
+  named_scope :with_beard_status_of, lambda { |status| 
+    {:joins => "INNER JOIN (SELECT MAX(id) as latest_version, dude_id FROM beard_versions GROUP BY dude_id) as b on dudes.id = b.dude_id INNER JOIN beard_versions on b.latest_version = beard_versions.id", :conditions => ["beard_versions.status = ?", status], :order => "beard_versions.updated_at desc"}  
+  }
 
+  def self.with_beards
+    self.with_beard_status_of(true)
+  end
+  
+  def self.without_beards
+    self.with_beard_status_of(false)
+  end
+  
   def has_beard?
     current_state.status
   end
