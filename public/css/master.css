@@ -202,29 +202,26 @@ dl.individual-status dd {
   -moz-box-shadow: 5px 5px 5px #CCC;
 }
 
-.bubble:after {
-  content:"\00a0";
-  display:block; /* reduce the damage in FF3.0 */
-  position:absolute;
-  z-index:0;
-  width:0;
-  height:0;
-  border-top:30px solid transparent;
-  border-right:35px solid transparent;
-  border-left:35px solid transparent;
-  border-bottom:30px solid transparent;
+.bubble .tab {
+  display:block;
+  position:absolute;  
+  overflow:hidden;
 }
 
-.bubble.left:after {
-  top:35px;
-  left:-70px;
-  border-right:35px solid #FFF;
+.bubble.bottom .tab {
+  background:transparent url(/images/bottom-tab.png) no-repeat bottom left;
+  width:100px;
+  height:30px;
+  bottom:-30px;
+  left:20px;
 }
 
-.bubble.bottom:after {
-  bottom:-50px;
-  left:30px;
-  border-top:30px solid #FFF;
+.bubble.left .tab {
+  width:50px;
+  height:60px;
+  background:transparent url(/images/left-tab.png) no-repeat top left;
+  top:30px;
+  left:-40px;
 }
 
 .bubble p {
