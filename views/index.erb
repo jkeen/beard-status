@@ -1,32 +1,27 @@
 <div class="status-list">
-  <dl class="beards">
-    <dt>
-      <div class="bubble bottom">
-        <p>YES</p>
-        <span class="tab">&nbsp;</span>
-      </div>
-    </dt>
-    <dd>
-      <ul>
-        <% @beards.each do |dude| %>
-          <li><a href="<%= status_url(dude.slug) %>"><%= dude.display_name %></a></li>
-        <% end %>
-      </ul>
-    </dd>
-  </dl>
-  <dl class="faces">
-    <dt>
-      <div class="bubble bottom">
-        <p>NO</p>
-        <span class="tab">&nbsp;</span>
-      </div>
-    </dt>
-    <dd>
-      <ul>
-        <% @faces.each do |dude| %>
-          <li><a href="<%= status_url(dude.slug) %>"><%= dude.display_name %></a></li>
-        <% end %>
-      </ul>
-    </dd>
-  </dl>
+  <div class="beards">
+    <div class="bubble bottom">
+      <p>YES</p>
+      <span class="tab">&nbsp;</span>
+    </div>
+    <p class="count"><%= number_with_delimiter(@beards.size) %></p>
+    <ul>
+      <% @beards.each do |dude| %>
+        <li><a href="<%= status_url(dude.slug) %>"><%= dude.display_name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+  
+  <div class="faces">
+    <div class="bubble bottom">
+      <p>NO</p>
+      <span class="tab">&nbsp;</span>
+    </div>
+    <p class="count"><%= number_with_delimiter(@faces.size) %></p>
+    <ul>
+      <% @faces.each do |dude| %>
+        <li><a href="<%= status_url(dude.slug) %>"><%= dude.display_name %></a></li>
+      <% end %>
+    </ul>
+  </div>
 </div>

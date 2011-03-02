@@ -1,17 +1,20 @@
 <form class="new" name="status_update" action="/new" method="post">
   <input type="hidden" name="slug" value="<%= dude_specified %>">
-  <p class="instructions">
+  <h2 class="instructions">
     Choose your address, dude.
-  </p>
+  </h2>
   <% if @dude %>
   <p class="error">
     <%= taken_message(@dude) %>
   </p>
   <% end %>
   <p class="slug">
-    <span class="url">http://</span><input id="slug" name="desired_slug" type="text" autofocus/><span class="url">.beardstatus.com</span>
+    <span class="slug-wrapper">
+      <input id="slug" name="desired_slug" type="text" autofocus />
+      <span class="url" onclick="$('#slug').focus();">.beardstatus.com</span>
+    </span>
+    <button class="btn large red" name="status" type="submit" value="I Hope It's Available">I Hope It's Available</button>
   </p>
   <p class="buttons">
-    <input name="status" type="submit" value="I Hope It's Available"/>
   </p>
 </form>
