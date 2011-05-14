@@ -4,7 +4,7 @@ require 'application'
 require 'sinatra/activerecord/rake'
 
 task :environment do   
-    ActiveRecord::Base.establish_connection(YAML::load(File.open('db/config.yml'))["production"])      
+    ActiveRecord::Base.establish_connection(YAML::load(File.open('config/database.yml'))["production"])      
 end
 
 namespace :db do

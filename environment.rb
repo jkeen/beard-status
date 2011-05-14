@@ -21,7 +21,7 @@ require 'sqlite3'
 require 'mysql'
 
 # Database setup.
-ActiveRecord::Base.establish_connection(YAML::load(File.open('db/config.yml'))["production"])   
+ActiveRecord::Base.establish_connection(YAML::load(File.open('config/database.yml'))["production"])   
 
 # Load Models
 require 'models'
