@@ -3,7 +3,7 @@ body {
   font-size:1em;
   margin:0;
   padding:0;
-  background-color:#E8E9D7;
+  background-color:#EEE;
   min-width:800px; 
 }
 
@@ -83,8 +83,7 @@ a{ text-decoration:none; }
 a:hover{text-decoration:underline;}
 
 div.content {
-  background-color:#F7FFF0;
-  background-image:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#F7FFF0), to(#F0F1DE));
+  background-color:#F7F7F7;
   padding:2em 0 4em 0;
   border-top:1px solid #D3D5C9;
   border-bottom:1px solid #D3D5C9;
