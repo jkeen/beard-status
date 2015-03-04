@@ -1,4 +1,15 @@
-require 'environment'
+require 'bundler'
+Bundler.setup
+require 'active_record'
+require 'sinatra'
+require "sinatra/subdomain"
+
+# Database setup.
+ActiveRecord::Base.establish_connection(YAML::load(File.open('config/database.yml'))["production"])   
+
+require './models'
+
+# require "./environment"
 
 helpers do
   def dude_specified

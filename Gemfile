@@ -1,15 +1,16 @@
-source :gemcutter#
+source "https://rubygems.org"
 source "http://gems.github.com"
-gem 'sinatra', :require => "sinatra"
-gem 'sinatra-static-assets', :require => "sinatra/static_assets"
-gem "sinatra-subdomain", :require => "sinatra/subdomain"
+
+gem 'sinatra'
+gem 'sinatra-static-assets'
+gem "sinatra-subdomain"
 gem 'rack'
-gem 'activerecord', "< 3", :require => "active_record"
+gem 'activerecord', ">3"
 gem 'sinatra-activerecord'
-gem 'sqlite3-ruby'
-gem 'mysql'
+gem 'mysql', "> 2.9"
 
 group :development do
+  gem 'sqlite3'
   gem 'rack-test'
   gem 'webrat'
 end

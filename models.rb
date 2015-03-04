@@ -1,13 +1,15 @@
+
+# Load Models
 class Dude < ActiveRecord::Base
   has_many :beard_versions, :dependent => :destroy
   validates_presence_of :slug
   validates_uniqueness_of :slug
 
-  default_scope :order => "created_at desc"
+  default_scope { order("created_at desc") }
   
   # Here's some code I don't like.
   
-  named_scope :with_beard_status_of, lambda { |status| 
+  scope :with_beard_status_of, lambda { |status| 
     {:joins => "INNER JOIN (SELECT MAX(id) as latest_version, dude_id FROM beard_versions GROUP BY dude_id) as b on dudes.id = b.dude_id INNER JOIN beard_versions on b.latest_version = beard_versions.id", :conditions => ["beard_versions.status = ?", status], :order => "beard_versions.updated_at desc"}  
   }
 
@@ -47,7 +49,8 @@ end
 class BeardVersion < ActiveRecord::Base
   belongs_to :dude
   belongs_to :beard_type #Active Record, this is so backwards
-  default_scope :order => "created_at desc"
+  default_scope { order("created_at desc") }
+
   
   def printed_status
     status ? "YES" : "NO"
