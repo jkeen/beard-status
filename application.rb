@@ -3,6 +3,8 @@ Bundler.setup
 require 'active_record'
 require 'sinatra'
 require "sinatra/subdomain"
+require "sinatra/activerecord"
+require 'sinatra/static_assets'
 
 # Database setup.
 ActiveRecord::Base.establish_connection(YAML::load(File.open('config/database.yml'))["production"])   
@@ -152,7 +154,10 @@ post '/new?' do
 end
 
 get '/?' do
-  @beards = Dude.with_beards
-  @faces = Dude.without_beards
+  @beards = Dude.with_beards.to_a
+  puts " -------------------"
+  puts @beards.inspect
+  puts " -------------------"
+  @faces = Dude.without_beards.to_a
   erb :index
 end

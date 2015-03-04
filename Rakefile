@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'rake'
-require 'application'
+require './application'
+
 require 'sinatra/activerecord/rake'
 
 task :environment do   

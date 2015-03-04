@@ -1,7 +1,7 @@
-require 'application'
+require './application'
 
 set :run, false
-set :environment, :production
+set :environment, :development
 set :method_override, :enable
 
 FileUtils.mkdir_p 'log' unless File.exists?('log')

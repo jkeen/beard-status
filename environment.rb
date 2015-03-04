@@ -7,7 +7,6 @@
 # require 'active_record'
 # require 'active_support'
 # require 'sinatra/activerecord'
-# require 'sqlite3'
 # require 'mysql'
 
 # Database setup.

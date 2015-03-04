@@ -10,7 +10,7 @@ class Dude < ActiveRecord::Base
   # Here's some code I don't like.
   
   scope :with_beard_status_of, lambda { |status| 
-    {:joins => "INNER JOIN (SELECT MAX(id) as latest_version, dude_id FROM beard_versions GROUP BY dude_id) as b on dudes.id = b.dude_id INNER JOIN beard_versions on b.latest_version = beard_versions.id", :conditions => ["beard_versions.status = ?", status], :order => "beard_versions.updated_at desc"}  
+    joins("INNER JOIN (SELECT MAX(id) as latest_version, dude_id FROM beard_versions GROUP BY dude_id) as b on dudes.id = b.dude_id INNER JOIN beard_versions on b.latest_version = beard_versions.id").where(["beard_versions.status = ?", status]).order("beard_versions.updated_at desc")  
   }
 
   def self.with_beards

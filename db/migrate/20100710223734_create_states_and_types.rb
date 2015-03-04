@@ -3,20 +3,20 @@ class CreateStatesAndTypes < ActiveRecord::Migration
     rename_table :dudes, :old_dudes
     
     create_table :dudes do |t|
-      t.integer :id
+      # t.integer :id
       t.string :name
       t.string :slug
       t.timestamp :pro
     end
     
     create_table :beard_types do |t|
-      t.integer :id
+      # t.integer :id
       t.string :name
       t.string :description
     end
     
     create_table :beard_states do |t|
-      t.integer :id
+      # t.integer :id
       t.integer :dude_id
       t.boolean :status
       t.integer :beard_type_id
